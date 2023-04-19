@@ -1,32 +1,25 @@
 import './App.css'
-import {
-	provideFASTDesignSystem,
-} from "@microsoft/fast-components";
-import { provideReactWrapper } from "@microsoft/fast-react-wrapper";
 import React from "react";
-
-import  'jae-fast-element'
+import "jae-fast-element";
+//wrapper
+import { provideFASTDesignSystem } from "@microsoft/fast-components";
+import { provideReactWrapper } from "@microsoft/fast-react-wrapper";
 import { MyListComponent,MyDesignTokenComponent } from 'jae-fast-element';
 const { wrap } = provideReactWrapper(React, provideFASTDesignSystem());  
-
-
-declare global {
-	interface HTMLElementTagNameMap {
-		"my-design-token-component": MyDesignTokenComponent;
-	}
-}
-
-
 export const FastCard = wrap(MyListComponent);
 export const FastDesignToken = wrap(MyDesignTokenComponent);
+
+//@ts-ignore
+const compo = (
+	<my-design-token-component jsonData='{"colors-color-primary":"red","colors-color-secondary":"yellow"}'></my-design-token-component>
+);
+
 function App() {
-  return (
+	return (
 		<div className="App">
-			<my-design-token-component jsonData='{"colors-color-primary":"teal","colors-color-secondary":"yellow"}'></my-design-token-component>
+			{compo}
 			{/* using wrapper */}
-			<FastDesignToken
-				sentence="I am different as I was passed different styles :o"
-			></FastDesignToken>
+			<FastDesignToken sentence="I am different as I was passed different styles :o"></FastDesignToken>
 		</div>
 	);
 }
