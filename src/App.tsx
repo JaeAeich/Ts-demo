@@ -9,8 +9,8 @@ const { wrap } = provideReactWrapper(React, provideFASTDesignSystem());
 export const FastCard = wrap(MyListComponent);
 export const FastDesignToken = wrap(MyDesignTokenComponent);
 
-//@ts-ignore
 const compo = (
+	//@ts-ignore
 	<my-design-token-component jsonData='{"colors-color-primary":"red","colors-color-secondary":"yellow"}'></my-design-token-component>
 );
 
